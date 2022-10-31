@@ -5,11 +5,17 @@ import org.alert.MarketAlert;
 import org.alert.Olimpus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
 
 
 public class AlertScraperTest {
@@ -381,5 +387,29 @@ public class AlertScraperTest {
 
         //Verify
         Assertions.assertEquals(-9999,actual);
+    }
+
+    @Test
+    public void testPostAlerts_InvalidRequest() throws Exception
+    {
+        HttpResponse<String> mockedResponse = Mockito.mock(HttpResponse.class);
+        Mockito.when(mockedResponse.statusCode()).thenReturn(400);
+        Mockito.when(mockedResponse.body()).thenReturn("some string");
+
+        Olimpus olimpusMock = Mockito.mock(Olimpus.class);
+        MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
+        Mockito.when(marketAlert.postAlert(anyString())).thenReturn(CompletableFuture.completedFuture(mockedResponse));
+        Mockito.when(marketAlert.clearAlerts()).thenReturn(CompletableFuture.completedFuture(mockedResponse));
+
+        AlertScraper alertScraper = new AlertScraper(olimpusMock, marketAlert);
+
+        final String expectedExceptionThrown = "Invalid Request to Market Alert!";
+
+        Exception exceptionThrown = Assertions.assertThrows(
+                Exception.class,
+                alertScraper::sendAlerts
+        );
+
+        Assertions.assertEquals(expectedExceptionThrown,exceptionThrown.getMessage());
     }
 }

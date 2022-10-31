@@ -7,7 +7,6 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
 public class MarketAlert {
-
     public CompletableFuture<HttpResponse<String>> clearAlerts() {
          HttpClient httpclient = HttpClient.newHttpClient();
          HttpRequest request = HttpRequest.newBuilder()
@@ -26,5 +25,4 @@ public class MarketAlert {
 
         return httpclient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
-
 }
