@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
+
 public class LoginSteps {
     MarketUMLogin marketUMLogin;
     MarketUMAdmin marketUMAdmin = new MarketUMAdmin();
@@ -45,8 +47,7 @@ public class LoginSteps {
 
 
     @Given("I am an administrator of the website and I upload {int} alerts")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAlerts(int arg0)
-    {
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAlerts(int arg0) throws IOException, InterruptedException {
         this.marketUMAdmin.clearAlerts();
         MarketUMAlert alert = new MarketUMAlert(1,"Test","TestDescription","https://olimpusmusic.com/product/adam-audio-t7v/","https://olimpusmusic.com/wp-content/uploads/2022/10/IT12575.jpg",21900);
         String alertJson = alert.alertToJson();
