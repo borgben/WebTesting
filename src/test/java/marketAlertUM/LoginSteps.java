@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.MarketAlertUM.MarketUMAdmin;
 import org.MarketAlertUM.MarketUMAlert;
 import org.MarketAlertUM.MarketUMLogin;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -115,4 +116,19 @@ public class LoginSteps {
         }
     }
 
+    @Given("I am an administrator of the website and I upload more than {int} alerts")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlerts(int arg0) throws IOException, InterruptedException {
+        this.marketUMAdmin.clearAlerts();
+        MarketUMAlert alert = new MarketUMAlert(1,"Test","TestDescription","https://olimpusmusic.com/product/adam-audio-t7v/","https://olimpusmusic.com/wp-content/uploads/2022/10/IT12575.jpg",21900);
+        String alertJson = alert.alertToJson();
+        for (int i = arg0+1; i>0; i--)
+        {
+            this.marketUMAdmin.postAlert(alertJson);
+        }
+    }
+
+    @Then("I should see {int} alerts")
+    public void iShouldSeeAlerts(int arg0) {
+        Assertions.assertEquals(this.marketUMLogin.getAlerts().size(),arg0);
+    }
 }
