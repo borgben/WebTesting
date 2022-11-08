@@ -4,13 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class MarketUMLogin {
     WebDriver driver;
     WebElement userId;
 
-    String resultURL;
+    String currentURL;
 
     WebElement submitButton;
+
+    List<WebElement> alerts;
+
+
 
     public MarketUMLogin(WebDriver driver) {
         this.driver = driver;
@@ -23,12 +29,22 @@ public class MarketUMLogin {
     {
         this.userId.sendKeys(credential);
         this.submitButton.click();
-        this.resultURL = driver.getCurrentUrl();
+        this.currentURL = driver.getCurrentUrl();
     }
 
-    public String getResultURL()
+    public String getCurrentURL()
     {
-        return this.resultURL;
+        return this.currentURL;
+    }
+
+    public void viewAlerts(){
+        this.driver.get(currentURL);
+        alerts = driver.findElements(By.xpath("//table[@border='1']"));
+    }
+
+    public List<WebElement> getAlerts()
+    {
+        return this.alerts;
     }
 
 }

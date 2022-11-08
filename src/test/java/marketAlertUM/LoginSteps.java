@@ -1,6 +1,5 @@
 package marketAlertUM;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,7 +24,7 @@ public class LoginSteps {
 
     @Then("I should see my alerts")
     public void iShouldSeeMyAlerts() {
-        Assertions.assertEquals("https://www.marketalertum.com/Alerts/List",marketUMLogin.getResultURL());
+        Assertions.assertEquals("https://www.marketalertum.com/Alerts/List",marketUMLogin.getCurrentURL());
     }
 
     @When("I login using invalid credentials")
@@ -35,7 +34,7 @@ public class LoginSteps {
 
     @Then("I should see the login page")
     public void iShouldSeeTheLoginPage() {
-        Assertions.assertEquals("https://www.marketalertum.com/Alerts/Login",marketUMLogin.getResultURL());
+        Assertions.assertEquals("https://www.marketalertum.com/Alerts/Login",marketUMLogin.getCurrentURL());
     }
 
 }
