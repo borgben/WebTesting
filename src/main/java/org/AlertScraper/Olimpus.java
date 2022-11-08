@@ -1,11 +1,12 @@
-package org.alert;
+package org.AlertScraper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class Olimpus {
     protected WebDriver driver;
@@ -59,8 +60,8 @@ public class Olimpus {
         this.searchButton.click();
     }
 
-    public List<WebElement> getProducts()
-    {
+    public List<WebElement> getProducts() throws InterruptedException {
+        sleep(10000);
         return driver.findElements(By.xpath("//li[@class='col-md-3 col-xs-6 product']"));
     }
 }

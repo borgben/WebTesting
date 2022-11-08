@@ -1,4 +1,4 @@
-package org.alert;
+package org.AlertScraper;
 
 import java.net.URI;
 import java.net.http.HttpClient;

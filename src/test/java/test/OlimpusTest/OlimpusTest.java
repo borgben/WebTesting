@@ -1,13 +1,11 @@
-package test.olimpus;
+package test.OlimpusTest;
 
-import org.alert.Olimpus;
+import org.AlertScraper.Olimpus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -260,8 +258,7 @@ public class OlimpusTest {
     }
 
     @Test
-    public void testSearchProducts_ProductsFound()
-    {
+    public void testSearchProducts_ProductsFound() throws InterruptedException {
         //Setup
         WebElement dummyElement = new WebElement() {
             @Override
@@ -371,8 +368,7 @@ public class OlimpusTest {
     }
 
     @Test
-    public void testGetProducts_ProductsNotFound()
-    {
+    public void testGetProducts_ProductsNotFound() throws InterruptedException {
         //Setup
         WebElement dummyElement = new WebElement() {
             @Override

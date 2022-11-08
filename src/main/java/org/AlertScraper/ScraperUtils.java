@@ -1,4 +1,4 @@
-package org.alert;
+package org.AlertScraper;
 
 public class ScraperUtils {
 

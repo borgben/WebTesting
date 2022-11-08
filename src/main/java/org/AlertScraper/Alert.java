@@ -1,4 +1,4 @@
-package org.alert;
+package org.AlertScraper;
 
 import com.google.gson.Gson;
 
@@ -31,14 +31,16 @@ public class Alert {
         return new Gson().toJson(this);
     }
 
-    public CompletableFuture<HttpResponse<String>> postAlert()  {
-        HttpClient httpclient = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.marketalertum.com/Alert"))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(alertToJson()))
-                .build();
-
-        return httpclient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+    @Override
+    public String toString() {
+        return "Alert{" +
+                "alertType=" + alertType +
+                ", heading='" + heading + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", postedBy='" + postedBy + '\'' +
+                ", priceInCents=" + priceInCents +
+                '}';
     }
 }

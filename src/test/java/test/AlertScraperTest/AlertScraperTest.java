@@ -1,11 +1,10 @@
 package test.AlertScraperTest;
 
-import org.alert.AlertScraper;
-import org.alert.MarketAlert;
-import org.alert.Olimpus;
+import org.AlertScraper.AlertScraper;
+import org.AlertScraper.MarketAlert;
+import org.AlertScraper.Olimpus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
 
@@ -21,8 +20,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 public class AlertScraperTest {
 
     @Test
-    public void testGetAlerts_MoreThan5()
-    {
+    public void testGetAlerts_MoreThan5() throws InterruptedException {
         //Setup
         WebElement dummyElement = new WebElement() {
             @Override
@@ -135,8 +133,7 @@ public class AlertScraperTest {
     }
 
     @Test
-    public void testGetAlerts_lessThan5()
-    {
+    public void testGetAlerts_lessThan5() throws InterruptedException {
         //Setup
         WebElement dummyElement = new WebElement() {
             @Override
@@ -247,8 +244,7 @@ public class AlertScraperTest {
     }
 
     @Test
-    public void testGetAlerts_Expected()
-    {
+    public void testGetAlerts_Expected() throws InterruptedException {
         //Setup
         WebElement dummyElement = new WebElement() {
             @Override

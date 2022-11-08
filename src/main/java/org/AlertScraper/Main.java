@@ -1,22 +1,24 @@
-package org.alert;
+package org.AlertScraper;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws Exception {
         System.setProperty("webdriver.chrome.driver","C:\\Users\\benja\\webtesting\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Olimpus olimpus = new Olimpus();
+        MarketAlert marketAlert = new MarketAlert();
+
         olimpus.setDriver(driver);
         olimpus.setSearchBox();
         olimpus.setSearchButton();
         olimpus.searchProduct("Bass Guitar");
+
+        AlertScraper alertScraper = new AlertScraper(olimpus,marketAlert);
+        alertScraper.getAlerts();
+        alertScraper.sendAlerts();
     }
 }

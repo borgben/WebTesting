@@ -1,4 +1,4 @@
-package org.alert;
+package org.AlertScraper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -33,8 +33,7 @@ public class AlertScraper {
         this.marketAlert = marketAlert;
     }
 
-    public void getAlerts()
-    {
+    public void getAlerts() throws InterruptedException {
         List<WebElement> rawData = olimpus.getProducts();
         for (int i = 0; i < 5; i++){
 
@@ -64,6 +63,7 @@ public class AlertScraper {
 
             //Create new alert and add it to the list.
             alerts.add(new Alert(6, heading, description, itemUrl, imageUrl,priceCents));
+            System.out.println(alerts);
         }
     }
 
@@ -72,7 +72,7 @@ public class AlertScraper {
 
         CompletableFuture<HttpResponse<String>> clearResponse = marketAlert.clearAlerts();
         while (!clearResponse.isDone()){}
-        if(clearResponse.get().statusCode() != 201)
+        if(clearResponse.get().statusCode() != 200)
         {
             throw new Exception("Invalid Request to Market Alert!");
         }
