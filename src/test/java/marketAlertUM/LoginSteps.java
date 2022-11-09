@@ -131,4 +131,13 @@ public class LoginSteps {
     public void iShouldSeeAlerts(int arg0) {
         Assertions.assertEquals(this.marketUMLogin.getAlerts().size(),arg0);
     }
+
+    @Given("I am an administrator of the website and I upload an alert of type {int}")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeAlertType(int arg0) {
+        
+    }
+
+    @And("the icon displayed should be {String}")
+    public void theIconDisplayedShouldBeIconFileName(String arg0) {
+    }
 }
