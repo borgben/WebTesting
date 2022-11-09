@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import org.MarketAlertUM.MarketUMAdmin;
 import org.MarketAlertUM.MarketUMAlert;
 import org.MarketAlertUM.MarketUMLogin;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -133,11 +132,19 @@ public class LoginSteps {
     }
 
     @Given("I am an administrator of the website and I upload an alert of type {int}")
-    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeAlertType(int arg0) {
-        
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfTypeAlertType(int arg0) throws IOException, InterruptedException {
+        this.marketUMAdmin.clearAlerts();
+        MarketUMAlert alert = new MarketUMAlert(arg0,"Test","TestDescription","https://olimpusmusic.com/product/adam-audio-t7v/","https://olimpusmusic.com/wp-content/uploads/2022/10/IT12575.jpg",21900);
+        String alertJson = alert.alertToJson();
+        this.marketUMAdmin.postAlert(alertJson);
     }
 
-    @And("the icon displayed should be {String}")
-    public void theIconDisplayedShouldBeIconFileName(String arg0) {
+
+
+    @And("the icon displayed should be {string}")
+    public void theIconDisplayedShouldBe(String arg0) {
+        for (WebElement alert: marketUMLogin.getAlerts()) {
+            Assertions.assertEquals(arg0,alert.findElement(By.xpath("//td[@colspan='2']")).findElement(By.tagName("img")).getAttribute("src").replaceAll("https://www.marketalertum.com/images/", ""));
+        }
     }
 }

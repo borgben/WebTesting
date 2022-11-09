@@ -25,7 +25,7 @@ Feature:  Alerts
     Given I am a user of marketalertum
     When I view a list of alerts
     Then I should see 1 alerts
-    And the icon displayed should be <icon-file-name>
+    And the icon displayed should be "<icon-file-name>"
     Examples:
       | alert-type | icon-file-name         |
       | 1          | icon-car.png           |
