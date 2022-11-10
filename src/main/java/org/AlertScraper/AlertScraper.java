@@ -45,28 +45,16 @@ public class AlertScraper {
                 break;
             }
 
-            //We retrieve the item url
             WebElement imageDiv = product.findElement(By.tagName("a"));
             String itemUrl = imageDiv.getAttribute("href");
-
-            //We retrieve the image Url
             String imageUrl = imageDiv.findElement(By.tagName("img")).getAttribute("src");
-
-            //We retrieve the heading.
             String heading = product.findElement(By.tagName("h4")).getText();
-
-            //We retrieve the description.
             String description = product.findElement(By.className("description")).getText();
-
-            //We retrieve the price.
             int priceCents= parsePrice(product.findElement(By.className("price")).getText());
 
-            //Create new alert and add it to the list.
             alerts.add(new Alert(6, heading, description, itemUrl, imageUrl,priceCents));
-            System.out.println(alerts);
         }
     }
-
 
     public void sendAlerts() throws Exception {
 

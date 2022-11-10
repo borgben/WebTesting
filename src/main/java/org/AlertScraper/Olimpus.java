@@ -28,6 +28,7 @@ public class Olimpus {
         catch (Exception e)
         {
             this.searchBox = null;
+            System.out.println("No such element found!");
         }
     }
 
@@ -45,6 +46,7 @@ public class Olimpus {
         catch (Exception e)
         {
             this.searchButton = null;
+            System.out.println("No such element found!");
         }
     }
 
@@ -53,8 +55,7 @@ public class Olimpus {
         return searchButton;
     }
 
-    public void searchProduct(String productName)
-    {
+    public void searchProduct(String productName) {
         driver.manage().window().maximize();
         this.searchBox.sendKeys(productName);
         this.searchButton.click();

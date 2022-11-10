@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
+import test.OlimpusTest.DummyElement;
 
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -22,92 +23,7 @@ public class AlertScraperTest {
     @Test
     public void testGetAlerts_MoreThan5() throws InterruptedException {
         //Setup
-        WebElement dummyElement = new WebElement() {
-            @Override
-            public void click() {
-
-            }
-
-            @Override
-            public void submit() {
-
-            }
-
-            @Override
-            public void sendKeys(CharSequence... charSequences) {
-
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public String getTagName() {
-                return null;
-            }
-
-            @Override
-            public String getAttribute(String s) {
-                return "€1,499.00";
-            }
-
-            @Override
-            public boolean isSelected() {
-                return false;
-            }
-
-            @Override
-            public boolean isEnabled() {
-                return false;
-            }
-
-            @Override
-            public String getText() {
-                return "€1,499.00";
-            }
-
-            @Override
-            public List<WebElement> findElements(By by) {
-                return null;
-            }
-
-            @Override
-            public WebElement findElement(By by) {
-                return this;
-            }
-
-            @Override
-            public boolean isDisplayed() {
-                return false;
-            }
-
-            @Override
-            public Point getLocation() {
-                return null;
-            }
-
-            @Override
-            public Dimension getSize() {
-                return null;
-            }
-
-            @Override
-            public Rectangle getRect() {
-                return null;
-            }
-
-            @Override
-            public String getCssValue(String s) {
-                return null;
-            }
-
-            @Override
-            public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-                return null;
-            }
-        };
+        WebElement dummyElement = new DummyElement();
         Olimpus olimpusMock = Mockito.mock(Olimpus.class);
         MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
         List<WebElement> List = new ArrayList<>() {
@@ -135,92 +51,7 @@ public class AlertScraperTest {
     @Test
     public void testGetAlerts_lessThan5() throws InterruptedException {
         //Setup
-        WebElement dummyElement = new WebElement() {
-            @Override
-            public void click() {
-
-            }
-
-            @Override
-            public void submit() {
-
-            }
-
-            @Override
-            public void sendKeys(CharSequence... charSequences) {
-
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public String getTagName() {
-                return null;
-            }
-
-            @Override
-            public String getAttribute(String s) {
-                return "€1,499.00";
-            }
-
-            @Override
-            public boolean isSelected() {
-                return false;
-            }
-
-            @Override
-            public boolean isEnabled() {
-                return false;
-            }
-
-            @Override
-            public String getText() {
-                return "€1,499.00";
-            }
-
-            @Override
-            public List<WebElement> findElements(By by) {
-                return null;
-            }
-
-            @Override
-            public WebElement findElement(By by) {
-                return this;
-            }
-
-            @Override
-            public boolean isDisplayed() {
-                return false;
-            }
-
-            @Override
-            public Point getLocation() {
-                return null;
-            }
-
-            @Override
-            public Dimension getSize() {
-                return null;
-            }
-
-            @Override
-            public Rectangle getRect() {
-                return null;
-            }
-
-            @Override
-            public String getCssValue(String s) {
-                return null;
-            }
-
-            @Override
-            public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-                return null;
-            }
-        };
+        WebElement dummyElement = new DummyElement();
         Olimpus olimpusMock = Mockito.mock(Olimpus.class);
         MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
         List<WebElement> List = new ArrayList<>() {
@@ -246,92 +77,7 @@ public class AlertScraperTest {
     @Test
     public void testGetAlerts_Expected() throws InterruptedException {
         //Setup
-        WebElement dummyElement = new WebElement() {
-            @Override
-            public void click() {
-
-            }
-
-            @Override
-            public void submit() {
-
-            }
-
-            @Override
-            public void sendKeys(CharSequence... charSequences) {
-
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public String getTagName() {
-                return null;
-            }
-
-            @Override
-            public String getAttribute(String s) {
-                return "€1,499.00";
-            }
-
-            @Override
-            public boolean isSelected() {
-                return false;
-            }
-
-            @Override
-            public boolean isEnabled() {
-                return false;
-            }
-
-            @Override
-            public String getText() {
-                return "€1,499.00";
-            }
-
-            @Override
-            public List<WebElement> findElements(By by) {
-                return null;
-            }
-
-            @Override
-            public WebElement findElement(By by) {
-                return this;
-            }
-
-            @Override
-            public boolean isDisplayed() {
-                return false;
-            }
-
-            @Override
-            public Point getLocation() {
-                return null;
-            }
-
-            @Override
-            public Dimension getSize() {
-                return null;
-            }
-
-            @Override
-            public Rectangle getRect() {
-                return null;
-            }
-
-            @Override
-            public String getCssValue(String s) {
-                return null;
-            }
-
-            @Override
-            public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-                return null;
-            }
-        };
+        WebElement dummyElement = new DummyElement();
         Olimpus olimpusMock = Mockito.mock(Olimpus.class);
         MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
         List<WebElement> List = new ArrayList<>() {
@@ -386,16 +132,64 @@ public class AlertScraperTest {
     }
 
     @Test
-    public void testPostAlerts_InvalidRequest() throws Exception
+    public void testPostAlerts_InvalidPostRequest() throws Exception
     {
-        HttpResponse<String> mockedResponse = Mockito.mock(HttpResponse.class);
-        Mockito.when(mockedResponse.statusCode()).thenReturn(400);
-        Mockito.when(mockedResponse.body()).thenReturn("some string");
+        WebElement dummyElement = new DummyElement();
+        Olimpus olimpusMock = Mockito.mock(Olimpus.class);
+        MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
+        List<WebElement> List = new ArrayList<>() {
+            {
+                add(dummyElement);
+                add(dummyElement);
+                add(dummyElement);
+                add(dummyElement);
+                add(dummyElement);
+                add(dummyElement);
+            }
+        };
+        Mockito.when(olimpusMock.getProducts())
+                .thenReturn(List);
+
+        HttpResponse<String> mockedPostResponse = Mockito.mock(HttpResponse.class);
+        HttpResponse<String> mockedDeleteResponse = Mockito.mock(HttpResponse.class);
+
+        Mockito.when(mockedPostResponse.statusCode()).thenReturn(400);
+        Mockito.when(mockedPostResponse.body()).thenReturn("some string");
+
+        Mockito.when(mockedDeleteResponse.statusCode()).thenReturn(200);
+        Mockito.when(mockedDeleteResponse.body()).thenReturn("some string");
+
+        Mockito.when(marketAlert.postAlert(anyString())).thenReturn(CompletableFuture.completedFuture(mockedPostResponse));
+        Mockito.when(marketAlert.clearAlerts()).thenReturn(CompletableFuture.completedFuture(mockedDeleteResponse));
+
+        AlertScraper alertScraper = new AlertScraper(olimpusMock, marketAlert);
+        alertScraper.getAlerts();
+        final String expectedExceptionThrown = "Invalid Request to Market Alert!";
+
+        Exception exceptionThrown = Assertions.assertThrows(
+                Exception.class,
+                alertScraper::sendAlerts
+        );
+
+        Assertions.assertEquals(expectedExceptionThrown,exceptionThrown.getMessage());
+    }
+
+    @Test
+    public void testPostAlerts_InvalidDeleteRequest() throws Exception
+    {
+        HttpResponse<String> mockedPostResponse = Mockito.mock(HttpResponse.class);
+        HttpResponse<String> mockedDeleteResponse = Mockito.mock(HttpResponse.class);
+
+        Mockito.when(mockedDeleteResponse.statusCode()).thenReturn(400);
+        Mockito.when(mockedDeleteResponse.body()).thenReturn("some string");
+
+        Mockito.when(mockedPostResponse.statusCode()).thenReturn(201);
+        Mockito.when(mockedPostResponse.body()).thenReturn("some string");
 
         Olimpus olimpusMock = Mockito.mock(Olimpus.class);
         MarketAlert marketAlert = Mockito.mock(MarketAlert.class);
-        Mockito.when(marketAlert.postAlert(anyString())).thenReturn(CompletableFuture.completedFuture(mockedResponse));
-        Mockito.when(marketAlert.clearAlerts()).thenReturn(CompletableFuture.completedFuture(mockedResponse));
+        Mockito.when(marketAlert.postAlert(anyString())).thenReturn(CompletableFuture.completedFuture(mockedPostResponse));
+        Mockito.when(marketAlert.clearAlerts()).thenReturn(CompletableFuture.completedFuture(mockedDeleteResponse));
 
         AlertScraper alertScraper = new AlertScraper(olimpusMock, marketAlert);
 
