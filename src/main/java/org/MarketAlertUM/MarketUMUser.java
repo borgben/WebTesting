@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class MarketUMLogin {
+public class MarketUMUser {
     WebDriver driver;
     WebElement userId;
 
@@ -18,11 +18,16 @@ public class MarketUMLogin {
 
 
 
-    public MarketUMLogin(WebDriver driver) {
+    public MarketUMUser(WebDriver driver) {
         this.driver = driver;
         this.driver.get("https://www.marketalertum.com/Alerts/Login");
         this.userId = driver.findElement(By.id("UserId"));
         this.submitButton = driver.findElement(By.xpath("//input[@type='submit']"));
+    }
+
+    public void closeSite()
+    {
+        this.driver.close();
     }
 
     public void login(String credential)
